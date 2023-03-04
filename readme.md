@@ -1,3 +1,11 @@
-# Это 'backend' нашего проекта. 
+# backend
 
-Что здесь будет? Нам еще предстоит это узнать
+Это 'backend' нашего проекта.
+
+## Contributing
+
+1. Установить зависимость
+
+```bash
+pip install -r requirements.txt
+```
