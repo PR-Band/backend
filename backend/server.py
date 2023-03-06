@@ -5,5 +5,3 @@ app = Flask(__name__)
 def server():
     return "Привет!"
 
-if __name__=="__main__":
-    app.run(debug=True)
