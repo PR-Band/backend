@@ -1,3 +1,6 @@
+from flask import Flask
+from backend.server import app
+
 import logging
 
 logger = logging.getLogger(__name__)
