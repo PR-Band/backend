@@ -1,5 +1,5 @@
 from flask import Flask
-from backend.server import app
+from backend.products import app
 
 import logging
 
@@ -11,4 +11,4 @@ def main():
     logger.info('hello world')
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(port=8000)
