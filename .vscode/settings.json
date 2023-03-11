@@ -1,5 +1,4 @@
 {
-    "editor.rulers": [
-        99
-    ],
+    "editor.rulers": [99],
+    "thunder-client.saveToWorkspace": true
 }
