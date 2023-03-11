@@ -1,5 +1,5 @@
 from flask import Flask
-from backend.products import app
+from backend.categories import app
 
 import logging
 
