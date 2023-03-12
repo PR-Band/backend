@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "6d81e8d3-aefb-4bb8-a436-d5a382891b51",
+    "name": "local",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2023-03-11T20:47:57.621Z",
+    "modified": "2023-03-11T20:47:57.621Z",
+    "data": [
+      {
+        "name": "endpoint",
+        "value": "http://127.0.0.1:8000"
+      }
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "d849b724-2e95-4117-891f-0829d29c7f35",
+    "colId": "18db38ed-27ca-4833-87da-87fd7ff0ad48",
+    "containerId": "",
+    "name": "get_all",
+    "url": "{{endpoint}}/api/v1/categories/",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-03-11T20:43:16.425Z",
+    "modified": "2023-03-11T20:50:46.364Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
