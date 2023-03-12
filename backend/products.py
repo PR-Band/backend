@@ -1,7 +1,8 @@
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, Blueprint
 from http import HTTPStatus
 from uuid import uuid4
 
+view = Blueprint('products', __name__)
 
 storage = [{
         "id": uuid4().hex,
@@ -13,20 +14,20 @@ storage = [{
         "category": "что-то"}]
 
 
-app = Flask(__name__)
-# @app.route('/')
+
+# @view.route('/')
 # def server():
 #     return "Привет!"
 
 # Вывести список всех товаров
-@app.get('/api/v1/products/')
+@view.get('/')
 def get_all_products():
     # возвращаем список объектов и статус код 200 ОК
     return jsonify({'products': storage}), 200
 
 
 # Получить данные о конкретном товаре
-@app.get('/api/v1/products/<string:uid>')
+@view.get('/<string:uid>')
 def get_product_by_id(uid):
     # возвращаем найденный объект
     for diction in storage:
@@ -40,7 +41,7 @@ def get_product_by_id(uid):
 
 
 # Добавить новый товар
-@app.post('/api/v1/products/')
+@view.post('/')
 def add_product():
     # получить тело запроса можно с помощью модуля request payload = request.json()
     product = {
@@ -53,7 +54,7 @@ def add_product():
     return jsonify(product), 200
 
 # Обновить данные продукта
-@app.put('/api/v1/products/<string:uid>')
+@view.put('/<string:uid>')
 def update_product(uid):
     for diction in storage:
         if diction["id"] == uid:
@@ -63,7 +64,7 @@ def update_product(uid):
     return diction, 200
 
 # Удалить показатель
-@app.delete('/api/v1/products/<string:uid>')
+@view.delete('/<string:uid>')
 def delete_product(uid):
     for diction in storage:
         if diction["id"] == uid:
