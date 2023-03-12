@@ -1,8 +1,10 @@
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, Blueprint
 from http import HTTPStatus
 from uuid import uuid4
 
-app = Flask(__name__)
+view = Blueprint('categories', __name__)
+
+
 
 
 categories = [
@@ -18,13 +20,13 @@ categories = [
 
 storage = {category['id']: category for category in categories}
 
-@app.get('/api/v1/categories/')
+@view.get('/')
 def get_all_categories():
     # возвращаем список обьектов и статус код 200 OK
     return jsonify(list(storage.values())), 200
 
 
-@app.get('/api/v1/categories/<string:uid>')
+@view.get('/<string:uid>')
 def get_category_by_id(uid):
     # возвращаем найденный обьект
     category = storage.get(uid)
@@ -33,7 +35,7 @@ def get_category_by_id(uid):
     abort(404)
 
 
-@app.post('/api/v1/category/')
+@view.post('/')
 def add_category():
     # получить тело запроса можно с помощью модуля request
     # payload = request.json()
@@ -44,7 +46,7 @@ def add_category():
     return jsonify(category), 200
 
 
-@app.put('/api/v1/categories/<string:uid>')
+@view.put('/<string:uid>')
 def update_category(uid):
     # должны вернуть измененный объект
     category = storage.get(uid)
@@ -56,7 +58,7 @@ def update_category(uid):
     return jsonify(category), 200
 
 
-@app.delete('/api/v1/categories/<string:uid>')
+@view.delete('/<string:uid>')
 def delete_category(uid):
     # ничего не возвращаем, 204 - NO CONTENT
     if uid not in storage:
