@@ -12,5 +12,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "21081751-3155-4522-9876-5aa86e74aff5",
+    "colId": "18db38ed-27ca-4833-87da-87fd7ff0ad48",
+    "containerId": "",
+    "name": "put",
+    "url": "{{endpoint}}/api/v1/products/8bff1a8e6b384e92969e2410d89e72c5",
+    "method": "PUT",
+    "sortNum": 30000,
+    "created": "2023-03-13T20:07:24.749Z",
+    "modified": "2023-03-13T20:10:38.382Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
