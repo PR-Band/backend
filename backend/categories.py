@@ -1,24 +1,19 @@
-from flask import Flask, jsonify, request, abort, Blueprint
 from http import HTTPStatus
 from uuid import uuid4
 
+from flask import Blueprint, abort, jsonify, request
+
 view = Blueprint('categories', __name__)
-
-
-
-
 categories = [
-    {"id": uuid4().hex,
-     "title": "Тренировки по волейболу"},
-    {"id": uuid4().hex,
-     "title": "Массаж"}
+    {'id': uuid4().hex,
+     'title': 'Тренировки по волейболу',
+     },
+    {'id': uuid4().hex,
+     'title': 'Массаж',
+     },
 ]
-
-# storage = {}
-# for category in categories:
-#     storage[category['id']] = category
-
 storage = {category['id']: category for category in categories}
+
 
 @view.get('/')
 def get_all_categories():
@@ -32,13 +27,12 @@ def get_category_by_id(uid):
     category = storage.get(uid)
     if category:
         return jsonify(category), 200
-    abort(404)
+    abort(HTTPStatus.NOT_FOUND)
 
 
 @view.post('/')
 def add_category():
     # получить тело запроса можно с помощью модуля request
-    # payload = request.json()
     category = request.json
     category['id'] = uuid4().hex
     storage[category['id']] = category
@@ -51,7 +45,7 @@ def update_category(uid):
     # должны вернуть измененный объект
     category = storage.get(uid)
     if uid not in storage:
-        abort(404)
+        abort(HTTPStatus.NOT_FOUND)
 
     payload = request.json
     category.update(payload)
@@ -62,7 +56,7 @@ def update_category(uid):
 def delete_category(uid):
     # ничего не возвращаем, 204 - NO CONTENT
     if uid not in storage:
-        abort(404)
+        abort(HTTPStatus.NOT_FOUND)
 
     storage.pop(uid)
     return {}, 204

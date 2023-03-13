@@ -1,4 +1,9 @@
 {
     "editor.rulers": [99],
-    "thunder-client.saveToWorkspace": true
+    "thunder-client.saveToWorkspace": true,
+    "python.linting.mypyEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.testing.pytestEnabled": false,
+    "python.linting.enabled": true
 }
