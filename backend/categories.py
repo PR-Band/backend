@@ -34,6 +34,9 @@ def get_category_by_id(uid):
 def add_category():
     # получить тело запроса можно с помощью модуля request
     category = request.json
+    if not category:
+        abort(HTTPStatus.BAD_REQUEST)
+
     category['id'] = uuid4().hex
     storage[category['id']] = category
     # должны вернуть созданный у нас объект
@@ -43,11 +46,14 @@ def add_category():
 @view.put('/<string:uid>')
 def update_category(uid):
     # должны вернуть измененный объект
+    payload = request.json
+    if not payload:
+        abort(HTTPStatus.BAD_REQUEST)
+
     category = storage.get(uid)
-    if uid not in storage:
+    if not category:
         abort(HTTPStatus.NOT_FOUND)
 
-    payload = request.json
     category.update(payload)
     return jsonify(category), 200
 

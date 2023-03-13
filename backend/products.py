@@ -39,11 +39,14 @@ def get_product_by_id(uid):
 
 @view.post('/')
 def add_product():
-    # получить тело запроса можно с помощью request payload = request.json()
+    payload = request.json
+    if not payload:
+        abort(HTTPStatus.BAD_REQUEST)
+
     product = {
         'id': uuid4().hex,
-        'title': request.json['title'],
-        'category': request.json.get('category', ''),
+        'title': payload['title'],
+        'category': payload.get('category', ''),
     }
     storage.append(product)
     # должны вернуть созданный у нас объект
@@ -52,10 +55,13 @@ def add_product():
 
 @view.put('/<string:uid>')
 def update_product(uid):
+    payload = request.json
+    if not payload:
+        abort(HTTPStatus.BAD_REQUEST)
     for diction in storage:
         if diction['id'] == uid:
-            diction['title'] = request.json.get('title', diction['title'])
-            diction['category'] = request.json.get('category', diction['category'])
+            diction['title'] = payload.get('title', diction['title'])
+            diction['category'] = payload.get('category', diction['category'])
         return diction, 200
 
 
