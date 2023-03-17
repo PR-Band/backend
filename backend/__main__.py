@@ -2,8 +2,8 @@ import logging
 
 from flask import Flask
 
-from backend import categories
-from backend.views import products
+from backend import products, categories
+from backend.views import categories, products
 
 logger = logging.getLogger(__name__)
 
