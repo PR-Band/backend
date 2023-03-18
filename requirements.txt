@@ -1,3 +1,5 @@
 flask==2.2.3
 mypy==1.1.1
 wemake-python-styleguide==0.17.0
+SQLAlchemy==1.4.46
+psycopg2-binary==2.9.5
