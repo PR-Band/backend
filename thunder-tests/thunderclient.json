@@ -141,11 +141,11 @@
     "colId": "2cd35868-1022-4809-bfd7-80b8ada610e5",
     "containerId": "",
     "name": "get_by_id Copy",
-    "url": "{{endpoint}}/api/v1/products/7",
+    "url": "{{endpoint}}/api/v1/products/1",
     "method": "GET",
     "sortNum": 40000,
     "created": "2023-03-23T09:04:54.823Z",
-    "modified": "2023-03-24T08:33:11.435Z",
+    "modified": "2023-03-24T09:43:00.885Z",
     "headers": [],
     "params": [],
     "tests": []
