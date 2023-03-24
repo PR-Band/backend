@@ -31,7 +31,7 @@ class Pgstorage:
         db_session.commit()
         return product_update
 
-    def delete(self, uid: int) -> None:
+    def delete(self, uid: int):
         product_delete = Product.query.get(uid)
         db_session.delete(product_delete)
         db_session.commit()
