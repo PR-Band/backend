@@ -55,12 +55,12 @@
     "method": "POST",
     "sortNum": 25000,
     "created": "2023-03-17T08:34:30.296Z",
-    "modified": "2023-03-17T09:41:30.547Z",
+    "modified": "2023-03-23T16:33:20.806Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"title\":\"Пауерлифтинг тренировки\"\n}",
+      "raw": "{\n  \"title\":\"Волейбол тренировки\"\n}",
       "form": []
     },
     "tests": []
@@ -80,6 +80,91 @@
     "body": {
       "type": "json",
       "raw": "0938355ac162464a98af0fb5828093b6",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "17712836-444d-4ae5-9e38-5f7df81d48fb",
+    "colId": "2cd35868-1022-4809-bfd7-80b8ada610e5",
+    "containerId": "",
+    "name": "add Copy",
+    "url": "{{endpoint}}/api/v1/products/",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-03-18T17:48:40.403Z",
+    "modified": "2023-03-24T08:40:30.668Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\":\"тренировки по литрболу\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f5effa75-25c3-44ee-8c7e-7055299e7bf4",
+    "colId": "2cd35868-1022-4809-bfd7-80b8ada610e5",
+    "containerId": "",
+    "name": "get_all Copy",
+    "url": "{{endpoint}}/api/v1/products/",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-03-23T08:57:15.522Z",
+    "modified": "2023-03-23T10:04:23.208Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "b11e4715-bfa5-4c75-a8b3-39707f89e3c0",
+    "colId": "2cd35868-1022-4809-bfd7-80b8ada610e5",
+    "containerId": "",
+    "name": "delete Copy",
+    "url": "{{endpoint}}/api/v1/products/8",
+    "method": "DELETE",
+    "sortNum": 30000,
+    "created": "2023-03-23T09:00:07.519Z",
+    "modified": "2023-03-24T08:40:46.092Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "0938355ac162464a98af0fb5828093b6",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "ad387363-9eac-4629-945c-0257967eaee9",
+    "colId": "2cd35868-1022-4809-bfd7-80b8ada610e5",
+    "containerId": "",
+    "name": "get_by_id Copy",
+    "url": "{{endpoint}}/api/v1/products/1",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2023-03-23T09:04:54.823Z",
+    "modified": "2023-03-24T09:43:00.885Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "e20d3a10-085e-4b2b-97bd-9bbf0ae978f4",
+    "colId": "2cd35868-1022-4809-bfd7-80b8ada610e5",
+    "containerId": "",
+    "name": "update Copy",
+    "url": "{{endpoint}}/api/v1/products/7",
+    "method": "PUT",
+    "sortNum": 50000,
+    "created": "2023-03-23T09:07:14.336Z",
+    "modified": "2023-03-24T08:33:30.750Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\":\"тренировки по гребле\"\n}",
       "form": []
     },
     "tests": []

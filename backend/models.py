@@ -3,15 +3,15 @@ from sqlalchemy import Column, Integer, String
 from backend.db import Base, engine
 
 
-class Salary(Base):
+class Product(Base):
 
     __tablename__ = 'products'
 
     id = Column(Integer, primary_key=True)
-    title = Column(String)
+    title = Column(String, unique=True)
 
     def __repr__(self):
-        return f'Salary {self.id}, {self.name}, {self.company}'
+        return f'products {self.id}, {self.title}'
 
 
 if __name__ == '__main__':
