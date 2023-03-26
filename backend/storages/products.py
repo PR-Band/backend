@@ -1,9 +1,7 @@
-from typing import Any
-
 from sqlalchemy.exc import IntegrityError
 
 from backend.db import db_session
-from backend.errors import ConflictError
+from backend.errors import ConflictError, NotfoundError
 from backend.models import Product
 
 
@@ -22,15 +20,25 @@ class Pgstorage:
         return Product.query.all()
 
     def get_by_id(self, uid) -> Product:
-        return Product.query.get(uid)
+        product_uid = Product.query.get(uid)
+        if not product_uid:
+            raise NotfoundError(entity='product', method='get_by_id')
+        return product_uid
 
-    def update(self, payload: dict[str, Any], uid: int) -> Product:
+    def update(self, uid: int, title: str) -> Product:
         product_update = Product.query.get(uid)
-        product_update.title = payload['title']
-        db_session.commit()
+        if not product_update:
+            raise NotfoundError(entity='product', method='update')
+        product_update.title = title
+        try:
+            db_session.commit()
+        except IntegrityError:
+            raise ConflictError(entity='products', method='add')
         return product_update
 
     def delete(self, uid: int):
         product_delete = Product.query.get(uid)
+        if not product_delete:
+            raise NotfoundError(entity='product', method='delete')
         db_session.delete(product_delete)
         db_session.commit()
