@@ -10,11 +10,14 @@ class AppError(Exception):
 
 class ConflictError(AppError):
     def __init__(self, entity: str, method: str) -> None:
-        super().__init__(f'Can not {method} {entity}', HTTPStatus.CONFLICT)
-
+        super().__init__(
+            f'Can not {method} {entity}. Perhaps the entry already exists',
+            HTTPStatus.CONFLICT,
+        )
 
 class NotfoundError(AppError):
     def __init__(self, entity: str, method: str) -> None:
         super().__init__(
-            f' can not found {entity} in {method}', HTTPStatus.NOT_FOUND,
+            f' can not found {entity} in {method}',
+            HTTPStatus.NOT_FOUND,
         )

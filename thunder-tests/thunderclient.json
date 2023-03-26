@@ -18,16 +18,16 @@
     "colId": "18db38ed-27ca-4833-87da-87fd7ff0ad48",
     "containerId": "",
     "name": "update",
-    "url": "{{endpoint}}/api/v1/categories/276316f59786492ea3b4c01c0fcb8e1f",
+    "url": "{{endpoint}}/api/v1/categories/6",
     "method": "PUT",
     "sortNum": 30000,
     "created": "2023-03-13T20:07:24.749Z",
-    "modified": "2023-03-17T09:40:55.500Z",
+    "modified": "2023-03-26T10:43:41.386Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"title\":\"Пауерлифтинг\"\n}",
+      "raw": "{\n  \"title\": \"Привет 2\",\n  \"id\": 6\n}",
       "form": []
     },
     "tests": []
@@ -37,11 +37,11 @@
     "colId": "18db38ed-27ca-4833-87da-87fd7ff0ad48",
     "containerId": "",
     "name": "get_by_id",
-    "url": "{{endpoint}}/api/v1/categories/276316f59786492ea3b4c01c0fcb8e1f",
+    "url": "{{endpoint}}/api/v1/categories/11",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-03-17T08:32:47.947Z",
-    "modified": "2023-03-17T09:40:42.493Z",
+    "modified": "2023-03-25T20:14:28.360Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -70,18 +70,13 @@
     "colId": "18db38ed-27ca-4833-87da-87fd7ff0ad48",
     "containerId": "",
     "name": "delete",
-    "url": "{{endpoint}}/api/v1/categories/0938355ac162464a98af0fb5828093b6",
+    "url": "{{endpoint}}/api/v1/categories/5",
     "method": "DELETE",
     "sortNum": 60000,
     "created": "2023-03-17T08:39:43.689Z",
-    "modified": "2023-03-17T09:22:03.612Z",
+    "modified": "2023-03-26T08:51:11.342Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "0938355ac162464a98af0fb5828093b6",
-      "form": []
-    },
     "tests": []
   },
   {

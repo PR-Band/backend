@@ -42,3 +42,4 @@ class Pgstorage:
             raise NotfoundError(entity='product', method='delete')
         db_session.delete(product_delete)
         db_session.commit()
+
