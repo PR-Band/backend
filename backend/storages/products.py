@@ -1,18 +1,23 @@
+import logging
+
 from sqlalchemy.exc import IntegrityError
 
 from backend.db import db_session
 from backend.errors import ConflictError, NotfoundError
 from backend.models import Product
 
+logger = logging.getLogger(__name__)
+
 
 class Pgstorage:
 
-    def add(self, title: str) -> Product:
-        add_product = Product(title=title)
+    def add(self, title: str, category_id: int) -> Product:
+        add_product = Product(title=title, category_id=category_id)
         db_session.add(add_product)
         try:
             db_session.commit()
         except IntegrityError:
+            logger.exception('Can not add product')
             raise ConflictError(entity='products', method='add')
         return add_product
 
@@ -25,11 +30,12 @@ class Pgstorage:
             raise NotfoundError(entity='product', method='get_by_id')
         return product_uid
 
-    def update(self, uid: int, title: str) -> Product:
+    def update(self, uid: int, title: str, category_id: int) -> Product:
         product_update = Product.query.get(uid)
         if not product_update:
             raise NotfoundError(entity='product', method='update')
         product_update.title = title
+        product_update.category_id = category_id
         try:
             db_session.commit()
         except IntegrityError:
@@ -42,4 +48,3 @@ class Pgstorage:
             raise NotfoundError(entity='product', method='delete')
         db_session.delete(product_delete)
         db_session.commit()
-
