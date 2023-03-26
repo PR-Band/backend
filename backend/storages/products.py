@@ -31,3 +31,4 @@ class ProductsStorage:
             return False
         self.storage.pop(uid)
         return True
+
