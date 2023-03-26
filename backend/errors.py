@@ -15,7 +15,6 @@ class ConflictError(AppError):
             HTTPStatus.CONFLICT,
         )
 
-
 class NotfoundError(AppError):
     def __init__(self, entity: str, method: str) -> None:
         super().__init__(
