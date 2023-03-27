@@ -1,23 +1,12 @@
 from http import HTTPStatus
-from uuid import uuid4
 
 from flask import Blueprint, abort, jsonify, request
 
 from backend import schemas
-from backend.storages.categories import CategoryStorage, PgstorageCategory
+from backend.storages.categories import PgstorageCategory
 
 view = Blueprint('categories', __name__)
 
-init_categories = [
-    {'id': uuid4().hex,
-     'title': 'Тренировки по волейболу',
-     },
-    {'id': uuid4().hex,
-     'title': 'Массаж',
-     },
-]
-
-storage = CategoryStorage(init_categories)
 pgstorage = PgstorageCategory()
 
 

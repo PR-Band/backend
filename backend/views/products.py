@@ -57,11 +57,7 @@ def update_product(uid):
         abort(HTTPStatus.BAD_REQUEST)
 
     new_product = schemas.Product(**payload)
-    product = pgstorage.update(
-        uid,
-        title=new_product.title,
-        category_id=new_product.category_id,
-    )
+    product = pgstorage.update(uid, title=new_product.title, category_id=new_product.category_id)
     return jsonify(schemas.Product.from_orm(product).dict()), 200
 
 
