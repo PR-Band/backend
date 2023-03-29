@@ -15,7 +15,7 @@ def get_all_categories():
     args = request.args
     args_title = args.get('title')
     if args_title:
-        categories = pgstorage.get_by_name(args['title'])
+        categories = pgstorage.get_by_name(args_title)
         new_categories = [
             schemas.Category.from_orm(category).dict()
             for category in categories
