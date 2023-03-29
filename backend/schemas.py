@@ -16,3 +16,12 @@ class Product(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class User(BaseModel):
+    id: int
+    tgid: int
+    username: str
+
+    class Config:
+        orm_mode = True
