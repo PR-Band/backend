@@ -18,16 +18,16 @@
     "colId": "18db38ed-27ca-4833-87da-87fd7ff0ad48",
     "containerId": "",
     "name": "update",
-    "url": "{{endpoint}}/api/v1/categories/6",
+    "url": "{{endpoint}}/api/v1/categories/2",
     "method": "PUT",
     "sortNum": 30000,
     "created": "2023-03-13T20:07:24.749Z",
-    "modified": "2023-03-26T10:43:41.386Z",
+    "modified": "2023-03-27T15:31:35.556Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"title\": \"Привет 2\",\n  \"id\": 6\n}",
+      "raw": "{\n  \"title\": \"Пауэрлифтинг\",\n  \"id\": 2\n}",
       "form": []
     },
     "tests": []
@@ -37,11 +37,11 @@
     "colId": "18db38ed-27ca-4833-87da-87fd7ff0ad48",
     "containerId": "",
     "name": "get_by_id",
-    "url": "{{endpoint}}/api/v1/categories/11",
+    "url": "{{endpoint}}/api/v1/categories/1",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-03-17T08:32:47.947Z",
-    "modified": "2023-03-25T20:14:28.360Z",
+    "modified": "2023-03-27T22:59:37.206Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -55,12 +55,12 @@
     "method": "POST",
     "sortNum": 25000,
     "created": "2023-03-17T08:34:30.296Z",
-    "modified": "2023-03-23T16:33:20.806Z",
+    "modified": "2023-03-27T15:32:18.522Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"title\":\"Волейбол тренировки\"\n}",
+      "raw": "{\n  \"title\":\"хоккей\"\n}",
       "form": []
     },
     "tests": []
@@ -70,11 +70,11 @@
     "colId": "18db38ed-27ca-4833-87da-87fd7ff0ad48",
     "containerId": "",
     "name": "delete",
-    "url": "{{endpoint}}/api/v1/categories/5",
+    "url": "{{endpoint}}/api/v1/categories/2",
     "method": "DELETE",
     "sortNum": 60000,
     "created": "2023-03-17T08:39:43.689Z",
-    "modified": "2023-03-26T08:51:11.342Z",
+    "modified": "2023-03-27T15:31:51.250Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -157,6 +157,40 @@
       "raw": "{\n  \"title\":\"тренировки по футболу\",\n  \"id\":9\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "46298f2b-cb4c-4d59-9d3f-649f9db33ce0",
+    "colId": "18db38ed-27ca-4833-87da-87fd7ff0ad48",
+    "containerId": "",
+    "name": "get_by_name",
+    "url": "{{endpoint}}/api/v1/categories/волейбол/",
+    "method": "GET",
+    "sortNum": 22500,
+    "created": "2023-03-27T14:53:00.530Z",
+    "modified": "2023-03-28T07:15:51.859Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "b26f2809-77ef-4fd3-ae13-16e93ee7a61e",
+    "colId": "18db38ed-27ca-4833-87da-87fd7ff0ad48",
+    "containerId": "",
+    "name": "get_by_name Copy",
+    "url": "{{endpoint}}/api/v1/categories/?title=Волейбол",
+    "method": "GET",
+    "sortNum": 23750,
+    "created": "2023-03-28T07:22:17.002Z",
+    "modified": "2023-03-28T13:25:52.641Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "title",
+        "value": "Волейбол",
+        "isPath": false
+      }
+    ],
     "tests": []
   }
 ]

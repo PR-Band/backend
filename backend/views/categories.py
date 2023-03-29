@@ -1,28 +1,26 @@
 from http import HTTPStatus
-from uuid import uuid4
 
 from flask import Blueprint, abort, jsonify, request
 
 from backend import schemas
-from backend.storages.categories import CategoryStorage, PgstorageCategory
+from backend.storages.categories import PgstorageCategory
 
 view = Blueprint('categories', __name__)
 
-init_categories = [
-    {'id': uuid4().hex,
-     'title': 'Тренировки по волейболу',
-     },
-    {'id': uuid4().hex,
-     'title': 'Массаж',
-     },
-]
-
-storage = CategoryStorage(init_categories)
 pgstorage = PgstorageCategory()
 
 
 @view.get('/')
 def get_all_categories():
+    args = request.args
+    args_title = args.get('title')
+    if args_title:
+        categories = pgstorage.get_by_name(args['title'])
+        new_categories = [
+            schemas.Category.from_orm(category).dict()
+            for category in categories
+        ]
+        return jsonify(new_categories), 200
     categories = pgstorage.get_all()
     new_categories = [
         schemas.Category.from_orm(category).dict()
@@ -34,9 +32,6 @@ def get_all_categories():
 @view.get('/<string:uid>')
 def get_category_by_id(uid):
     category = pgstorage.get_by_id(uid)
-    if not category:
-        abort(HTTPStatus.NOT_FOUND)
-
     return jsonify(schemas.Category.from_orm(category).dict()), 200
 
 

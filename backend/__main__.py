@@ -21,7 +21,6 @@ def handle_app_error(error: AppError):
     return jsonify(error=str(error)), error.status
 
 
-
 @app.errorhandler(NotfoundError)
 def handle_Notfound_error(error: NotfoundError):
     return jsonify(error=str(error)), error.status
