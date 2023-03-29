@@ -12,6 +12,15 @@ pgstorage = PgstorageCategory()
 
 @view.get('/')
 def get_all_categories():
+    args = request.args
+    args_title = args.get('title')
+    if args_title:
+        categories = pgstorage.get_by_name(args_title)
+        new_categories = [
+            schemas.Category.from_orm(category).dict()
+            for category in categories
+        ]
+        return jsonify(new_categories), 200
     categories = pgstorage.get_all()
     new_categories = [
         schemas.Category.from_orm(category).dict()
@@ -23,9 +32,6 @@ def get_all_categories():
 @view.get('/<string:uid>')
 def get_category_by_id(uid):
     category = pgstorage.get_by_id(uid)
-    if not category:
-        abort(HTTPStatus.NOT_FOUND)
-
     return jsonify(schemas.Category.from_orm(category).dict()), 200
 
 

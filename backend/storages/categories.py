@@ -16,7 +16,6 @@ class PgstorageCategory:
             raise ConflictError(entity='categories', method='add')
         return add_project
 
-    # TODO: добавить not_found error
     def get_all(self) -> list[Category]:
         category = Category.query.all()
         if not category:
@@ -29,7 +28,9 @@ class PgstorageCategory:
             raise NotfoundError(entity='categories', method='get_by_id')
         return category_uid
 
-    # TODO: добавить conflicterror, notfound_error
+    def get_by_name(self, name):
+        return Category.query.filter(Category.title == name).all()
+
     def update(self, uid: int, title: str) -> Category:
         category_update = Category.query.get(uid)
         if not category_update:
@@ -41,7 +42,6 @@ class PgstorageCategory:
             raise ConflictError(entity='categories', method='update')
         return category_update
 
-    # TODO: добавить not_FOUND
     def delete(self, uid: int) -> bool:
         category_delete = Category.query.get(uid)
         if not category_delete:
