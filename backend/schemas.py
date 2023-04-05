@@ -25,3 +25,13 @@ class User(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class ScheduleTemplate(BaseModel):
+    id: int
+    product_id: int
+    day: str
+    slot: str
+
+    class Config:
+        orm_mode = True

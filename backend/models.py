@@ -29,8 +29,10 @@ class Product(Base):
     )
     category = relationship('Category', back_populates='products')
 
+    schedule_template = relationship('ScheduleTemplate', back_populates='product')
+
     def __repr__(self):
-        return f'Product {self.id}, {self.title} {self.category_id}'
+        return f'Product {self.id}, {self.title}, {self.category_id}'
 
 
 class User(Base):
@@ -43,6 +45,22 @@ class User(Base):
 
     def __repr__(self):
         return f'Users {self.id}, {self.tgid}, {self.username}'
+
+
+class ScheduleTemplate(Base):
+    __tablename__ = 'schedule_templates'
+
+    id = Column(Integer, primary_key=True)
+    product_id = Column(
+        Integer,
+        ForeignKey('products.id', onupdate='RESTRICT', ondelete='RESTRICT'),
+        nullable=False
+    )
+    day = Column(String)
+    slot = Column(String)
+    product = relationship('Product', back_populates='schedule_template')
+    def __repr__(self):
+        return f'ScheduleTemplates {self.id}, {self.product_id}, {self.day}, {self.slot}'
 
 
 if __name__ == '__main__':
