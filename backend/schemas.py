@@ -31,7 +31,8 @@ class ScheduleTemplate(BaseModel):
     id: int
     product_id: int
     day: str
-    slot: str
+    start_slot: str
+    end_slot: str
 
     class Config:
         orm_mode = True
