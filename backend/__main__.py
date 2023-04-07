@@ -5,10 +5,8 @@ from flask import Flask, jsonify
 from pydantic import ValidationError
 
 from backend.db import db_session
-
 from backend.errors import AppError, NotfoundError
-
-from backend.views import categories, products, user
+from backend.views import categories, products, user, schedule_template
 
 logger = logging.getLogger(__name__)
 
@@ -37,6 +35,7 @@ def main():
     app.register_blueprint(categories.view, url_prefix='/api/v1/categories')
     app.register_blueprint(products.view, url_prefix='/api/v1/products')
     app.register_blueprint(user.view, url_prefix='/api/v1/users')
+    app.register_blueprint(schedule_template.view, url_prefix='/api/v1/schedule_templates/')
     app.teardown_appcontext(shutdown_session)
 
     app.run(port=APP_PORT)
