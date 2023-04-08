@@ -6,7 +6,7 @@ from pydantic import ValidationError
 
 from backend.db import db_session
 from backend.errors import AppError, NotfoundError
-from backend.views import categories, products, user, schedule_template
+from backend.views import categories, products, schedule_template, user
 
 logger = logging.getLogger(__name__)
 

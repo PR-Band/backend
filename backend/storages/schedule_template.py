@@ -11,12 +11,11 @@ logger = logging.getLogger(__name__)
 
 class STStorage:
 
-    def add(self, product_id: int, day: str, start_slot: str, end_slot: str) -> ScheduleTemplate:
+    def add(self, product_id: int, day: str, slot: str) -> ScheduleTemplate:
         add_schedule_template = ScheduleTemplate(
             product_id=product_id,
             day=day,
-            start_slot=start_slot,
-            end_slot=end_slot,
+            slot=slot,
         )
         db_session.add(add_schedule_template)
         try:
