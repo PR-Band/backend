@@ -21,7 +21,7 @@ class Product(Base):
     __tablename__ = 'products'
 
     id = Column(Integer, primary_key=True)
-    title = Column(String, unique=True)
+    title = Column(String, unique=False)
     category_id = Column(
         Integer,
         ForeignKey('categories.id', onupdate='RESTRICT', ondelete='RESTRICT'),
