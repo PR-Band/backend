@@ -49,7 +49,7 @@ class User(Base):
 
 class ScheduleTemplate(Base):
     __tablename__ = 'schedule_templates'
-    __table_args__ = (UniqueConstraint('day', 'slot', name='schedule_templates_day_slot_uc'))
+    __table_args__ = (UniqueConstraint('day', 'slot', name='schedule_templates_day_slot_uc'), )
 
     id = Column(Integer, primary_key=True)
     product_id = Column(
