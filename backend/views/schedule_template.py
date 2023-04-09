@@ -2,31 +2,12 @@ from http import HTTPStatus
 
 from flask import Blueprint, abort, jsonify, request
 
-from backend import schemas, models
+from backend import models, schemas
 from backend.storages.schedule_template import STStorage
 
 view = Blueprint('schedule_templates', __name__)
 
 storage = STStorage()
-
-
-@view.post('/')
-def add_schedule_templates():
-    payload = request.json
-    if not payload:
-        abort(HTTPStatus.BAD_REQUEST)
-    payload['id'] = -1
-    schedule_template = schemas.ScheduleTemplate(**payload)
-    slots = add_slots(schedule_template)
-    response = [
-        {
-            'product_id': slot.product_id,
-            'day': slot.day,
-            'slot': slot.slot,
-        }
-        for slot in slots
-    ]
-    return jsonify(response), 200
 
 
 def split_time(time: str) -> tuple[int, int]:
@@ -52,6 +33,7 @@ def split_slots(start_slot: str, end_slot: str) -> list[str]:
             hh_start += 1
             mm_start = 0
         slots.append(f'{hh_start:02}:{mm_start:02}')
+    slots.pop()
     return slots
 
 
@@ -69,3 +51,22 @@ def add_slots(new_schedule_template: schemas.ScheduleTemplate) -> list[models.Sc
         )
         new_slots.append(schedule_template)
     return new_slots
+
+
+@view.post('/')
+def add_schedule_templates():
+    payload = request.json
+    if not payload:
+        abort(HTTPStatus.BAD_REQUEST)
+    payload['id'] = -1
+    schedule_template = schemas.ScheduleTemplate(**payload)
+    slots = add_slots(schedule_template)
+    response = [
+        {
+            'product_id': slot.product_id,
+            'day': slot.day,
+            'slot': slot.slot,
+        }
+        for slot in slots
+    ]
+    return jsonify(response), 200
