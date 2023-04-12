@@ -4,15 +4,19 @@ from sqlalchemy.exc import IntegrityError
 
 from backend.db import db_session
 from backend.errors import ConflictError, NotfoundError
-from backend.models import Product
+from backend.models import Product, User
 
 logger = logging.getLogger(__name__)
 
 
 class Pgstorage:
 
-    def add(self, title: str, category_id: int) -> Product:
-        add_product = Product(title=title, category_id=category_id)
+    def add(self, title: str, category_id: int, user_id: int) -> Product:
+        add_product = Product(
+            title=title,
+            category_id=category_id,
+            user_id=user_id,
+        )
         db_session.add(add_product)
         try:
             db_session.commit()
@@ -29,6 +33,9 @@ class Pgstorage:
         if not product_uid:
             raise NotfoundError(entity='product', method='get_by_id')
         return product_uid
+
+    def get_products(self, user_id) -> list[Product]:
+        return Product.query.filter(Product.user_id == user_id).all()
 
     def update(self, uid: int, title: str, category_id: int) -> Product:
         product_update = Product.query.get(uid)

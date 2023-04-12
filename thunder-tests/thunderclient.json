@@ -88,12 +88,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-03-18T17:48:40.403Z",
-    "modified": "2023-03-26T21:31:36.009Z",
+    "modified": "2023-04-11T20:12:16.081Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"title\":\"Андрей\",\n  \"category_id\":\"8\"\n}",
+      "raw": "{\n  \"title\":\"Сантьяго, Верховая езда\",\n  \"category_id\":\"6\",\n  \"user_id\":\"2\"\n}",
       "form": []
     },
     "tests": []
@@ -182,12 +182,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-03-27T19:53:05.521Z",
-    "modified": "2023-04-04T21:47:42.212Z",
+    "modified": "2023-04-11T20:08:47.947Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{ \n  \"tgid\":\"6\",\n  \"username\":\"Дон Хуан\"\n}",
+      "raw": "{ \n  \"tgid\":\"2\",\n  \"username\":\"Сантьяго\"\n}",
       "form": []
     },
     "tests": []
@@ -221,14 +221,28 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-04-04T20:54:51.114Z",
-    "modified": "2023-04-08T13:51:51.098Z",
+    "modified": "2023-04-09T19:39:39.683Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"product_id\":6,\n  \"day\":\"Вс\",\n  \"start_slot\":\"19:00\",\n  \"end_slot\":\"20:00\"\n}",
+      "raw": "{\n  \"product_id\":6,\n  \"day\":\"Ср\",\n  \"start_slot\":\"19:00\",\n  \"end_slot\":\"20:00\"\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "46f44595-9d97-45e3-874b-a5198435c1fe",
+    "colId": "9c71c5c4-0fb7-4463-a967-f50d5d73fdc0",
+    "containerId": "",
+    "name": "get_products",
+    "url": "{{endpoint}}/api/v1/users/2/products/",
+    "method": "GET",
+    "sortNum": 5000,
+    "created": "2023-04-11T17:14:34.184Z",
+    "modified": "2023-04-11T20:22:35.786Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]

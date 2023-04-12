@@ -44,7 +44,11 @@ def add_product():
     new_product = schemas.Product(**payload)
 
     # должны вернуть созданный у нас объект
-    product = pgstorage.add(new_product.title, new_product.category_id)
+    product = pgstorage.add(
+        new_product.title,
+        new_product.category_id,
+        new_product.user_id,
+    )
     return jsonify(schemas.Product.from_orm(product).dict()), 200
 
 

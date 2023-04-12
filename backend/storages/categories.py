@@ -29,7 +29,7 @@ class PgstorageCategory:
         return category_uid
 
     def get_by_name(self, name):
-        return Category.query.filter(Category.title==name).all()
+        return Category.query.filter(Category.title == name).all()
 
     def search_by_name(self, name):
         search = f'%{name}%'

@@ -19,3 +19,6 @@ class UserStorage():
             logging.exception('Can not add user')
             raise ConflictError(entity='users', method='add')
         return add_user
+
+    def get_by_tgid(self, tgid) -> User:
+        return User.query.filter(User.tgid == tgid).first()
