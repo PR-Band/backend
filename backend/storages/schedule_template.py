@@ -24,3 +24,11 @@ class STStorage:
             logger.exception('Can not add schedule_template')
             raise ConflictError(entity='schedule_template', method='add')
         return add_schedule_template
+
+    def get_all(self) -> list[ScheduleTemplate]:
+        return ScheduleTemplate.query.all()
+
+    def get_by_day(self, day: str, product_id: int) -> list[ScheduleTemplate]:
+        query = ScheduleTemplate.query.filter(ScheduleTemplate.day == day)
+        query = query.filter(ScheduleTemplate.product_id == product_id)
+        return query.all()

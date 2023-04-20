@@ -1,3 +1,4 @@
+
 from http import HTTPStatus
 
 from flask import Blueprint, abort, jsonify, request
@@ -19,7 +20,6 @@ LAST_SLOT_MINUTES = 45
 SLOT_INTERVAL = 15
 
 
-# TODO: последний слот
 def split_slots(start_slot: str, end_slot: str) -> list[str]:
     """Возвращает список слотов в указанном диапазоне, с шагом в 15 минут."""
     hh_start, mm_start = split_time(start_slot)
@@ -70,3 +70,29 @@ def add_schedule_templates():
         for slot in slots
     ]
     return jsonify(response), 200
+
+
+@view.get('/')
+def get_all_schedule_templates():
+    slots = storage.get_all()
+    all_slots = [
+        schemas.ScheduleTemplate.from_orm(slot).dict()
+        for slot in slots
+    ]
+    return jsonify(all_slots), 200
+
+
+@view.get('/<string:day>')
+def get_slots_by_day():
+    # day = '2023-04-05'
+    # date_dt = datetime.strptime(day, '%Y-%m-%d')
+    # date_dt.strftime('%a')
+    args = request.args
+    args_day = args.get('day')
+    if args_day:
+        slots = storage.get_by_day(args_day.get('day'))
+        new_slots = [
+            schemas.ScheduleTemplate.from_orm(slot).dict()
+            for slot in slots
+        ]
+    return jsonify(new_slots), 200

@@ -20,12 +20,12 @@ def handle_app_error(error: AppError):
 
 
 @app.errorhandler(NotfoundError)
-def handle_Notfound_error(error: NotfoundError):
+def handle_notfound_error(error: NotfoundError):
     return jsonify(error=str(error)), error.status
 
 
 @app.errorhandler(ValidationError)
-def handle_Validation_error(error: ValidationError):
+def handle_validation_error(error: ValidationError):
     return jsonify(error=str(error)), HTTPStatus.UNPROCESSABLE_ENTITY
 
 

@@ -26,5 +26,12 @@
     "created": "2023-04-04T20:54:20.640Z",
     "sortNum": 40000,
     "folders": []
+  },
+  {
+    "_id": "db50588c-5033-488e-8b95-63352972f86b",
+    "colName": "slots",
+    "created": "2023-04-18T21:23:51.286Z",
+    "sortNum": 50000,
+    "folders": []
   }
 ]

@@ -88,12 +88,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-03-18T17:48:40.403Z",
-    "modified": "2023-04-11T20:12:16.081Z",
+    "modified": "2023-04-13T14:49:34.511Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"title\":\"Сантьяго, Верховая езда\",\n  \"category_id\":\"6\",\n  \"user_id\":\"2\"\n}",
+      "raw": "{\n  \"title\":\"Одежда от дома высокой культуры быта\",\n  \"category_id\":\"1\",\n  \"user_id\":\"14\"\n}",
       "form": []
     },
     "tests": []
@@ -131,11 +131,11 @@
     "colId": "2cd35868-1022-4809-bfd7-80b8ada610e5",
     "containerId": "",
     "name": "get_by_id Copy",
-    "url": "{{endpoint}}/api/v1/products/27",
+    "url": "{{endpoint}}/api/v1/products/8",
     "method": "GET",
     "sortNum": 40000,
     "created": "2023-03-23T09:04:54.823Z",
-    "modified": "2023-03-26T21:32:28.060Z",
+    "modified": "2023-04-19T12:52:34.615Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -182,12 +182,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-03-27T19:53:05.521Z",
-    "modified": "2023-04-11T20:08:47.947Z",
+    "modified": "2023-04-12T20:51:37.806Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{ \n  \"tgid\":\"2\",\n  \"username\":\"Сантьяго\"\n}",
+      "raw": "{ \n  \"tgid\":\"3\",\n  \"username\":\"Валентино\"\n}",
       "form": []
     },
     "tests": []
@@ -221,12 +221,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-04-04T20:54:51.114Z",
-    "modified": "2023-04-09T19:39:39.683Z",
+    "modified": "2023-04-20T10:43:56.705Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"product_id\":6,\n  \"day\":\"Ср\",\n  \"start_slot\":\"19:00\",\n  \"end_slot\":\"20:00\"\n}",
+      "raw": "{\n  \"product_id\":7,\n  \"day\":\"Ср\",\n  \"start_slot\":\"14:00\",\n  \"end_slot\":\"16:00\"\n}",
       "form": []
     },
     "tests": []
@@ -243,6 +243,53 @@
     "modified": "2023-04-11T20:22:35.786Z",
     "headers": [],
     "params": [],
+    "tests": []
+  },
+  {
+    "_id": "ab5b1cc3-4602-4c7c-9e21-e0040162d0c9",
+    "colId": "69f0c69b-b521-4236-834c-1e9780d76f70",
+    "containerId": "",
+    "name": "get_all",
+    "url": "{{endpoint}}/api/v1/schedule_templates/",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-04-14T19:19:09.374Z",
+    "modified": "2023-04-14T19:20:01.082Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "0a40f0dd-c885-4e11-bdcf-85577f0328b0",
+    "colId": "69f0c69b-b521-4236-834c-1e9780d76f70",
+    "containerId": "",
+    "name": "get_by_day",
+    "url": "{{endpoint}}/api/v1/schedule_templates/Чт/",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-04-15T07:45:39.330Z",
+    "modified": "2023-04-15T17:01:03.026Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "a10252cd-1067-4222-b035-a65b35162d6d",
+    "colId": "db50588c-5033-488e-8b95-63352972f86b",
+    "containerId": "",
+    "name": "add_slot",
+    "url": "{{endpoint}}/api/v1/products/7/slots/",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-04-18T21:24:20.738Z",
+    "modified": "2023-04-20T10:31:53.355Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"day\":\"2023-04-05\"\n}",
+      "form": []
+    },
     "tests": []
   }
 ]

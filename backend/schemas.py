@@ -1,3 +1,5 @@
+from datetime import date, datetime
+
 from pydantic import BaseModel
 
 
@@ -34,6 +36,33 @@ class ScheduleTemplate(BaseModel):
     day: str
     start_slot: str
     end_slot: str
+
+    class Config:
+        orm_mode = True
+
+
+class ScheduleTemplateCopy(BaseModel):
+    id: int
+    product_id: int
+    day: str
+    slot: str
+
+    class Config:
+        orm_mode = True
+
+
+class Slots(BaseModel):
+    id: int
+    product_id: int
+    day: datetime
+    slot: str
+
+    class Config:
+        orm_mode = True
+
+
+class SlotsEntrance(BaseModel):
+    day: date
 
     class Config:
         orm_mode = True
