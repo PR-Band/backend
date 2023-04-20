@@ -4,7 +4,7 @@ from sqlalchemy.exc import IntegrityError
 
 from backend.db import db_session
 from backend.errors import ConflictError, NotfoundError
-from backend.models import Product, User
+from backend.models import Product
 
 logger = logging.getLogger(__name__)
 

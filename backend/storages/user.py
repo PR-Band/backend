@@ -16,7 +16,7 @@ class UserStorage():
         try:
             db_session.commit()
         except IntegrityError:
-            logging.exception('Can not add user')
+            logging.info('Can not add user')
             raise ConflictError(entity='users', method='add')
         return add_user
 

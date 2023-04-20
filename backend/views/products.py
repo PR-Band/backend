@@ -1,14 +1,21 @@
+import locale
+import logging
+from datetime import date, datetime
 from http import HTTPStatus
 
 from flask import Blueprint, abort, jsonify, request
 
 from backend import schemas
 from backend.storages.products import Pgstorage
+from backend.storages.schedule_template import STStorage
+from backend.storages.slots import SlotStorage
 
 view = Blueprint('products', __name__)
 
 
 pgstorage = Pgstorage()
+storage = STStorage()
+slot_storage = SlotStorage()
 
 
 # Вывести список всех товаров
@@ -75,3 +82,43 @@ def delete_product(uid):
     # ничего не возвращаем, 204 - NO CONTENT
     pgstorage.delete(uid)
     return {}, 204
+
+
+logger = logging.getLogger(__name__)
+
+locale.setlocale(locale.LC_ALL, 'russian')
+
+
+def date_day(day: date):
+    # Получает день недели из конкретной даты
+    #day = '2023-04-05'
+    logging.basicConfig(level=logging.INFO)
+    # date_dt = datetime.strptime(day, '%Y-%m-%d')
+    logger.info(day.strftime('%a'))
+    return day.strftime('%a')
+
+def get_slot_time(day: date, slot: str) -> datetime:
+    # slot: '13:00'
+    return datetime.now()
+
+@view.post('/<int:product_id>/slots/')
+def add_slots(product_id: int):
+    payload = request.json
+    if not payload:
+        abort(HTTPStatus.BAD_REQUEST)
+    payload['id'] = -1
+    slot_with_date = schemas.SlotsEntrance(**payload)
+    day = date_day(slot_with_date.day)
+    slots = storage.get_by_day(day, product_id)
+
+    for slot in slots:
+        slot_time = get_slot_time(slot_with_date.day, slot.slot)
+        slot_storage.add(product_id, slot_time)
+    response = [
+        {
+            'product_id': new_slot.product_id,
+            'day': new_slot.day,
+            'slot': new_slot.slot,
+        }for new_slot in slots
+    ]
+    return jsonify(response), 204

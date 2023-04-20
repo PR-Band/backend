@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, UniqueConstraint
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from backend.db import Base, engine
@@ -38,6 +38,8 @@ class Product(Base):
 
     schedule_templates = relationship('ScheduleTemplate', back_populates='product')
 
+    slots = relationship('Slot', back_populates='product')
+
     def __repr__(self):
         return f'Product {self.id}, {self.title}, {self.category_id}'
 
@@ -69,6 +71,20 @@ class ScheduleTemplate(Base):
     slot = Column(String)
 
     product = relationship('Product', back_populates='schedule_templates')
+
+
+class Slot(Base):
+    __tablename__ = 'slots'
+
+    id = Column(Integer, primary_key=True)
+    product_id = Column(
+        Integer,
+        ForeignKey('products.id', onupdate='RESTRICT', ondelete='RESTRICT'),
+        nullable=False,
+    )
+    slot = Column(DateTime)
+
+    product = relationship('Product', back_populates='slots')
 
 
 if __name__ == '__main__':
