@@ -91,15 +91,15 @@ locale.setlocale(locale.LC_ALL, 'russian')
 
 def date_day(day: date):
     # Получает день недели из конкретной даты
-    #day = '2023-04-05'
     logging.basicConfig(level=logging.INFO)
-    # date_dt = datetime.strptime(day, '%Y-%m-%d')
     logger.info(day.strftime('%a'))
     return day.strftime('%a')
 
+
 def get_slot_time(day: date, slot: str) -> datetime:
-    # slot: '13:00'
-    return datetime.now()
+    time_slot = datetime.strptime(slot, '%H:%M').time()
+    return datetime.combine(day, time_slot)
+
 
 @view.post('/<int:product_id>/slots/')
 def add_slots(product_id: int):
